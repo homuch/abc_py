@@ -191,6 +191,10 @@ class AbcInterface
         /// @param filename
         /// @return if successful
         bool read(const std::string & filename);
+        /// @brief read a lib file
+        /// @param filename
+        /// @return if successful
+        bool read_lib(const std::string & filename);
         /// @brief write a file
         /// @param filename
         /// @return if successful
@@ -230,6 +234,9 @@ class AbcInterface
         /// @brief compress2rs "b -l; rs -K 6 -l; rw -l; rs -K 6 -N 2 -l; rf -l; rs -K 8 -l; b -l; rs -K 8 -N 2 -l; rw -l; rs -K 10 -l; rwz -l; rs -K 10 -N 2 -l; b -l; rs -K 12 -l; rfz -l; rs -K 12 -N 2 -l; rwz -l; b -l
         /// @return if successful
         bool compress2rs();
+        /// @brief map. performs technology mapping of the AIG
+        /// @return if successful
+        bool map();
         /*------------------------------*/ 
         /* Query the information        */
         /*------------------------------*/ 

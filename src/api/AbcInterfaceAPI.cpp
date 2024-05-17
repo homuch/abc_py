@@ -17,6 +17,7 @@ void initAbcInterfaceAPI(py::module &m)
         .def("start", &PROJECT_NAMESPACE::AbcInterface::start, "Start the ABC framework")
         .def("end", &PROJECT_NAMESPACE::AbcInterface::end, "Stop the ABC framework")
         .def("read", &PROJECT_NAMESPACE::AbcInterface::read, "Read a file")
+        .def("read_lib", &PROJECT_NAMESPACE::AbcInterface::read_lib, "Read a library file")
         .def("write", &PROJECT_NAMESPACE::AbcInterface::write, "Write a file")
         .def("aigStats", &PROJECT_NAMESPACE::AbcInterface::aigStats, "Get the AIG stats from the ABC framework`")
         .def("balance", &PROJECT_NAMESPACE::AbcInterface::balance, "balance action",
@@ -29,6 +30,7 @@ void initAbcInterfaceAPI(py::module &m)
         .def("refactor", &PROJECT_NAMESPACE::AbcInterface::refactor, "refactor action",
                 py::arg("n") = -1, py::arg("l") = false, py::arg("z") = false)
         .def("compress2rs", &PROJECT_NAMESPACE::AbcInterface::compress2rs)
+        .def("map", &PROJECT_NAMESPACE::AbcInterface::map, "map action")
         .def("aigNode", &PROJECT_NAMESPACE::AbcInterface::aigNode, "Get one AigNode")
         .def("numNodes", &PROJECT_NAMESPACE::AbcInterface::numNodes, "Get the number of nodes");
 

@@ -95,6 +95,22 @@ bool AbcInterface::read(const std::string &filename)
 
 }
 
+bool AbcInterface::read_lib(const std::string &filename)
+{
+    auto beginClk = clock();
+    char Command[1000];
+    // read the file
+    sprintf( Command, "read_lib %s", filename.c_str() );
+    if ( Cmd_CommandExecute( _pAbc, Command ) )
+    {
+        ERR("Cannot execute command \"%s\".\n", Command );
+        return false;
+    }
+    auto endClk = clock();
+    _lastClk = beginClk - endClk;
+    return true;
+}
+
 bool AbcInterface::write(const std::string &filename)
 {
     auto beginClk = clock();
@@ -249,6 +265,18 @@ bool AbcInterface::compress2rs()
     if (!this->resub(12, 2, -1, true, false)) { return false; }
     if (!this->rewrite(true, true)) { return false; }
     if (!this->balance(true, false, false, false)) { return false; }
+    return true;
+}
+
+bool AbcInterface::map()
+{
+    char Command[1000];
+    sprintf( Command, "map" );
+    if ( Cmd_CommandExecute( _pAbc, Command ) )
+    {
+        ERR("Cannot execute command \"%s\".\n", Command );
+        return false;
+    }
     return true;
 }
 
