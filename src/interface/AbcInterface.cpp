@@ -95,12 +95,12 @@ bool AbcInterface::read(const std::string &filename)
 
 }
 
-bool AbcInterface::read_lib(const std::string &filename)
+bool AbcInterface::read_library(const std::string &filename)
 {
     auto beginClk = clock();
     char Command[1000];
     // read the file
-    sprintf( Command, "read_lib %s", filename.c_str() );
+    sprintf( Command, "read_library %s", filename.c_str() );
     if ( Cmd_CommandExecute( _pAbc, Command ) )
     {
         ERR("Cannot execute command \"%s\".\n", Command );

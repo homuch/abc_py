@@ -194,7 +194,7 @@ class AbcInterface
         /// @brief read a lib file
         /// @param filename
         /// @return if successful
-        bool read_lib(const std::string & filename);
+        bool read_library(const std::string & filename);
         /// @brief write a file
         /// @param filename
         /// @return if successful

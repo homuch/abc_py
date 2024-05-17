@@ -17,7 +17,7 @@ void initAbcInterfaceAPI(py::module &m)
         .def("start", &PROJECT_NAMESPACE::AbcInterface::start, "Start the ABC framework")
         .def("end", &PROJECT_NAMESPACE::AbcInterface::end, "Stop the ABC framework")
         .def("read", &PROJECT_NAMESPACE::AbcInterface::read, "Read a file")
-        .def("read_lib", &PROJECT_NAMESPACE::AbcInterface::read_lib, "Read a library file")
+        .def("read_library", &PROJECT_NAMESPACE::AbcInterface::read_library, "Read a library file")
         .def("write", &PROJECT_NAMESPACE::AbcInterface::write, "Write a file")
         .def("aigStats", &PROJECT_NAMESPACE::AbcInterface::aigStats, "Get the AIG stats from the ABC framework`")
         .def("balance", &PROJECT_NAMESPACE::AbcInterface::balance, "balance action",
