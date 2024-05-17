@@ -95,6 +95,22 @@ bool AbcInterface::read(const std::string &filename)
 
 }
 
+bool AbcInterface::write(const std::string &filename)
+{
+    auto beginClk = clock();
+    char Command[1000];
+    
+    sprintf( Command, "write %s", filename.c_str() );
+    if ( Cmd_CommandExecute( _pAbc, Command ) )
+    {
+        ERR("Cannot execute command \"%s\".\n", Command );
+        return false;
+    }
+    auto endClk = clock();
+    _lastClk = beginClk - endClk;
+    return true;
+}
+
 bool AbcInterface::balance(bool l, bool d, bool s, bool x)
 {
     std::string cmd = "balance";

@@ -191,6 +191,10 @@ class AbcInterface
         /// @param filename
         /// @return if successful
         bool read(const std::string & filename);
+        /// @brief write a file
+        /// @param filename
+        /// @return if successful
+        bool write(const std::string & filename);
         /*------------------------------*/ 
         /* Take actions                 */
         /*------------------------------*/ 
