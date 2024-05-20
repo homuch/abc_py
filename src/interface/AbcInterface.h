@@ -187,6 +187,22 @@ class AbcInterface
         void start();
         /// @brief end the ABC framework
         void end();
+        /// @brief execute general command
+        /// @param command
+        /// @return if successful
+        bool executeCommand(const std::string & command);
+        /// @brief set variable
+        /// @param var_name
+        /// @param value
+        /// @return if successful
+        bool set(const std::string & var_name, const std::string & value="");
+        /// @brief unset variable
+        /// @param var_name
+        /// @return if successful
+        bool unset(const std::string & var_name);
+        /// @brief sets the current network to be the previously saved network
+        /// @return if successful
+        bool undo();
         /// @brief read a file
         /// @param filename
         /// @return if successful

@@ -70,6 +70,65 @@ void AbcInterface::end()
     Abc_Stop();
 }
 
+bool AbcInterface::executeCommand(const std::string &command){
+    auto beginClk = clock();
+    if ( Cmd_CommandExecute( _pAbc, command.c_str() ) )
+    {
+        ERR("Cannot execute command \"%s\".\n", command.c_str() );
+        return false;
+    }
+    auto endClk = clock();
+    _lastClk = beginClk - endClk;
+    return true;
+}
+
+bool AbcInterface::set(const std::string &var_name, const std::string &value)
+{
+    auto beginClk = clock();
+    char Command[1000];
+    // read the file
+    sprintf( Command, "set %s %s", var_name.c_str(), value.c_str() );
+    if ( Cmd_CommandExecute( _pAbc, Command ) )
+    {
+        ERR("Cannot execute command \"%s\".\n", Command );
+        return false;
+    }
+    auto endClk = clock();
+    _lastClk = beginClk - endClk;
+    return true;
+}
+
+bool AbcInterface::unset(const std::string& var_name)
+{
+    auto beginClk = clock();
+    char Command[1000];
+    // read the file
+    sprintf( Command, "unset %s", var_name.c_str());
+    if ( Cmd_CommandExecute( _pAbc, Command ) )
+    {
+        ERR("Cannot execute command \"%s\".\n", Command );
+        return false;
+    }
+    auto endClk = clock();
+    _lastClk = beginClk - endClk;
+    return true;
+}
+
+bool AbcInterface::undo(){
+    auto beginClk = clock();
+    char Command[1000];
+    // read the file
+    sprintf( Command, "undo" );
+    if ( Cmd_CommandExecute( _pAbc, Command ) )
+    {
+        ERR("Cannot execute command \"%s\".\n", Command );
+        return false;
+    }
+    auto endClk = clock();
+    _lastClk = beginClk - endClk;
+    return true;
+}
+
 bool AbcInterface::read(const std::string &filename)
 {
     auto beginClk = clock();
